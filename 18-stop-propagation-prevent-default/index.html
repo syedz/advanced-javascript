@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Events</title>
+  </head>
+  <style media="screen">
+    body {
+      background-color: blue;
+    }
+
+    .item {
+      padding: 40px;
+      border: 4px dashed purple;
+      font-size: 24px;
+    }
+
+    .first {
+      background-color: red;
+    }
+
+    .second {
+      background-color: green;
+    }
+
+    .third {
+      background-color: yellow;
+    }
+  </style>
+  <body class="body item">
+    <div class="first item">
+      <div class="second item">
+        <div class="third item">
+          <input type="checkbox" class="fourth item">Hello<br/>
+        </div>
+      </div>
+    </div>
+    <script charset="utf-8">
+      var items = document.getElementsByClassName("item");
+
+      for (var i = 0; i < items.length; i++) {
+        (function() {
+          var y = i;
+          items[y].addEventListener('click', function(event) {
+            event.preventDefault();
+            // if (y == 2) {
+            //   event.stopPropagation();
+            // }
+            console.log(items[y], event);
+          }, true); // if true, it's capturing phase, null is bubbling
+        }());
+      }
+    </script>
+  </body>
+</html>
